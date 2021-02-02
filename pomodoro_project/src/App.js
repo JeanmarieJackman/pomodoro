@@ -1,10 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Provider } from 'react-redux'
 
-function App() {
-  return (
-    <h1>App</h1>
-  );
-}
+import store from './store'
+import saga from './sagas/'
+import Main from './layouts/main'
+import { sagaMiddleware } from './middleware'
 
-export default App;
+const App = () => (
+  <Provider store={store}>
+    <Main />
+  </Provider>
+)
+
+export default App
+
+sagaMiddleware.run(saga)
